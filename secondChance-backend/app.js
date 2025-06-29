@@ -21,6 +21,9 @@ connectToDatabase().then(() => {
 
 app.use(express.json());
 
+const path = require('path');
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
+
 // Route files
 
 // authRoutes Step 2: import the authRoutes and store in a constant called authRoutes

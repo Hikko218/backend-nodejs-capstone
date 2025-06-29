@@ -6,6 +6,7 @@ const logger = require('../logger');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret_key';
+const pino = require('pino');
 
 //User registration
 router.post('/register', async (req, res) => {
@@ -146,6 +147,7 @@ try {
     };
     
     const authtoken = jwt.sign(payload, JWT_SECRET);
+    logger.info('User updated successfully');
     
     res.json({authtoken});
 } catch (e) {
